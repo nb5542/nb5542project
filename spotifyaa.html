@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify - Your favourite app</title>
+    <link rel = "stylesheet" href="style.css">
+</head>
+<body>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+body{
+    background-color: aliceblue;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+nav {
+    font-family: 'Ubuntu',sans-serif;
+
+}
+nav ul{
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    height: 89px;
+    background-color: black;
+    color: white;
+}
+nav ul li{
+    padding: 0 12px;
+}
+.brand img{
+    width: 125px;
+}
+.brand{
+    display: flex;
+    align-items: center;
+    font-weight: bolder;
+    font-size: 1.3rem;
+}
+.container{
+    min-height: 65vh;
+    background-color: black;
+    color: white;
+    font-family: 'Varela round',sans-serif;
+    display: flex;
+    width: 70%;
+    margin: 23px auto;
+    border-radius: 12px;
+    padding: 25px;
+    background-image: url('bgmusic5.jpg');
+}
+.bottom{
+    position: sticky;
+    height: 130px;
+    background-color: black;
+    color: white;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+}
+.icons{
+    margin-top: 34px;
+    rotate: 90deg;
+    
+}
+.icons i{
+    cursor: pointer;
+}
+#myprogressbar{
+    width: 80vw;
+    text-align: center;
+    cursor: pointer;
+
+}
+.songitemcontainer{
+    margin-top: 43px;
+}
+.songItem{
+    height: 50px;
+    display: flex;
+    background-color: white;
+    
+    color: black;
+    margin: 25px 50px;
+    margin-right: 50px;
+    margin-left: -275px;
+    padding: -50px;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 34px;
+    
+
+}
+.songItem img{
+    width: 43px;
+    margin: 0 23px;
+    border-radius: 34px;
+
+}
+.timestamp{
+    margin: 0 25px;
+    cursor: pointer;
+}
+.timestamp i{
+    cursor: pointer;
+}
+.songinfo{
+    position: absolute;
+    right: 300px;
+    top: 500px;
+    font-family: 'Varela Round', sans-serif;
+   
+}
+.songItem img{
+    opacity: 0;
+    transition: opacity 1s ease-in;
+}
+
+    </style>
+    <script>
+        console.log("WELCOME")
+
+//set the variables first
+let songindex = 0;
+let audioelement = new Audio()
+let masterplay = document.getElementById('masterplay')//masterplay id me icons kon deke yha se control karunga
+let myprogessbar =  document.getElementById('myprogressbar')
+
+let songs = [
+    {songname: "Salam-e-ishq", filepath: "Music/musicA/espresso.mp3", coverpath: ""},
+    {songname: "Salam-e-ishq", filepath: "musicA/espresso.mp3", coverpath: ""},
+    {songname: "Salam-e-ishq", filepath: "musicA/espresso.mp3", coverpath: ""},
+    {songname: "Salam-e-ishq", filepath: "musicA/espresso.mp3", coverpath: ""},
+    {songname: "Salam-e-ishq", filepath: "musicA/espresso.mp3", coverpath: ""},
+    {songname: "Salam-e-ishq", filepath: "musicA/espresso.mp3", coverpath: ""},
+    {songname: "Salam-e-ishq", filepath: "musicA/espresso.mp3", coverpath: ""},
+    {songname: "Salam-e-ishq", filepath: "musicA/espresso.mp3", coverpath: ""},
+    {songname: "Salam-e-ishq", filepath: "musicA/espresso.mp3", coverpath: ""},
+    {songname: "Salam-e-ishq", filepath: "musicA/espresso.mp3", coverpath: ""},
+    {songname: "Salam-e-ishq", filepath: "musicA/espresso.mp3", coverpath: ""},
+    {songname: "Salam-e-ishq", filepath: "musicA/espresso.mp3", coverpath: ""},
+    {songname: "Salam-e-ishq", filepath: "musicA/espresso.mp3", coverpath: ""},
+  
+]
+//Handle play/pause/click
+masterplay.addEventListener('click',()=>{
+    if(audioelement.paused || audioelement.currentTime<=0){
+        audioelement.play();
+        masterplay.classList.remove('fa-play');
+        masterplay.classList.add('fa-pause');
+    }
+    else{
+        audioelement.pause();
+        masterplay.classList.remove('fa-pause');
+        masterplay.classList.add('fa-play');
+    }
+        
+}
+)
+
+//Listen to events
+audioelement.addEventListener('timeupdate',() =>{console.log('timeupdate');
+//Update seekbar
+progess = parseInt((audioelement.currentTime/audioelement.duration)*100);
+console.log(progess);
+myprogessbar.value = progress;
+})
+       
+     
+    </script>
+    
+
+   
+    <nav>
+        <ul>
+            <li class = "brand"><img src="spologo1.png" alt="Spotify"></li>
+            <li>Home</li>
+            <li>About</li>
+        </ul>
+    </nav>
+    <div class = "container">
+        <hl>Best of NCS - NOn Copyright Music</hl>
+        <div class="songitemcontainer">
+            
+            <div class="songItem">
+                <img src="cover1.jpg" alt="1">
+                <span>Let me Love you</span>
+                <span class="songlistplay">
+                    <span class="timestamp">05.34</span>
+                </span>
+                <i class="fa-solid fa-play"></i>
+            </div>
+            <div class="songItem">
+                <img src="cover1.jpg" alt="1">
+                <span>Let me Love you</span>
+                <span class="songlistplay">
+                    <span class="timestamp">05.34</span>
+                </span>
+                <i class="fa-solid fa-play"></i>
+            </div>
+            <div class="songItem">
+                <img src="cover1.jpg" alt="1">
+                <span>Let me Love you</span>
+                <span class="songlistplay">
+                    <span class="timestamp">05.34</span>
+                </span>
+                <i class="fa-solid fa-play"></i>
+            </div>
+            <div class="songItem">
+                <img src="cover1.jpg" alt="1">
+                <span>Let me Love you</span>
+                <span class="songlistplay">
+                    <span class="timestamp">05.34</span>
+                </span>
+                <i class="fa-solid fa-play"></i>
+            </div>
+            <div class="songItem">
+                <img src="cover1.jpg" alt="1">
+                <span>Let me Love you</span>
+                <span class="songlistplay">
+                    <span class="timestamp">05.34</span>
+                </span>
+                <i class="fa-solid fa-play"></i>
+            </div>
+            <div class="songItem">
+                <img src="cover1.jpg" alt="1">
+                <span>Let me Love you</span>
+                <span class="songlistplay">
+                    <span class="timestamp">05.34</span>
+                </span>
+                <i class="fa-solid fa-play"></i>
+            </div>
+            <div class="songItem">
+                <img src="cover1.jpg" alt="1">
+                <span>Let me Love you</span>
+                <span class="songlistplay">
+                    <span class="timestamp">05.34</span>
+                </span>
+                <i class="fa-solid fa-play"></i>
+            </div>
+            <div class="songinfo">
+                <img src="playingm1.gif" width="200px" alt="">Let me Love you - Justin Bieber
+            </div>
+            
+        </div>
+        <div class="songlist"></div>
+        <div class="songbanner"></div>
+
+    </div>
+<div class = "bottom">
+    <input type="range" name="range" id="myprogressbar" min="0" max="100">
+    <div class="icons"></div>
+    <i class="fa-solid fa-backward-step"></i>
+    <i class="fa-solid fa-play" id = "masterplay"></i>
+    <i class="fa-solid fa-forward-step"></i>
+
+
+<script src="https://kit.fontawesome.com/89d4138a2e.js" crossorigin="anonymous"></script>
+
+</body>
+</html>
